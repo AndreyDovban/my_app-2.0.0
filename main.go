@@ -1,8 +1,14 @@
 package main
 
 import (
+	"my_app/src/static"
+	"my_app/src/store"
+
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/widget"
+
 	"encoding/json"
-	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -24,10 +30,7 @@ type config struct {
 
 func main() {
 
-	var filename = flag.String("config", "config.json", "")
-	flag.Parse()
-
-	data, err := os.ReadFile(*filename)
+	data, err := os.ReadFile(store.Root + "config/config.json")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -40,5 +43,17 @@ func main() {
 	}
 
 	fmt.Println(config.Text)
+
+	a := app.New()
+	w := a.NewWindow(config.Text)
+	w.SetIcon(static.ResV1Png)
+
+	w.SetContent(widget.NewLabel(config.Text))
+
+	w.CenterOnScreen()
+	w.Resize(fyne.NewSize(600, 400))
+	w.Show()
+
+	a.Run()
 
 }
