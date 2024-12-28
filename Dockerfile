@@ -15,6 +15,7 @@ RUN apt-get -y install libGL-devel
 RUN apt-get -y install libXxf86vm-devel
 RUN go install fyne.io/fyne/v2/cmd/fyne@latest
 RUN ln -s  /root/go/bin/fyne /usr/local/bin/fyne
+RUN apt-get -y install rpmdevtools rpmlint
 
 
 # docker build -t my_alt:12 .
