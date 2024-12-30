@@ -17,8 +17,8 @@ RUN apt-get -y install libXxf86vm-devel
 RUN go install fyne.io/fyne/v2/cmd/fyne@latest
 RUN ln -s  /root/go/bin/fyne /usr/local/bin/fyne
 RUN apt-get -y install rpmdevtools rpmlint
-RUN cd /opt/app/my_app
-RUN go mod tidy
+WORKDIR  /opt/app/my_app
+RUN go mod tidy 
 
 
 # docker build -t my_alt:12 .
