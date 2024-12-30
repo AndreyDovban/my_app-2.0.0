@@ -2,6 +2,7 @@ FROM alt:p10
 
 WORKDIR /opt/app
 COPY ./go1.23.4.linux-amd64.tar.gz /opt/app
+COPY ./my_app /opt/app/my_app
 RUN tar --directory=/usr/local -xzf /opt/app/go1.23.4.linux-amd64.tar.gz
 RUN ln -s  /usr/local/go/bin/go /usr/local/bin/go
 RUN apt-get update
@@ -16,6 +17,8 @@ RUN apt-get -y install libXxf86vm-devel
 RUN go install fyne.io/fyne/v2/cmd/fyne@latest
 RUN ln -s  /root/go/bin/fyne /usr/local/bin/fyne
 RUN apt-get -y install rpmdevtools rpmlint
+RUN cd /opt/app/my_app
+RUN go mod tidy
 
 
 # docker build -t my_alt:12 .
