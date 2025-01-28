@@ -8,6 +8,7 @@ RUN apt update
 RUN apt -y dist-upgrade
 RUN apt -y install mc
 RUN apt -y install nano
+RUN apt -y install firefox
 RUN apt -y install astra-freeipa-server
 
 
