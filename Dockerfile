@@ -137,3 +137,6 @@ RUN apt -y install astra-freeipa-server
 # net.ipv6.conf.all.disable_ipv6 = 1
 # net.ipv6.conf.lo.disable_ipv6 = 0
 
+# Примечание - разрешение неавторизованых подключений к "X" серверу
+# xhost + 
+
