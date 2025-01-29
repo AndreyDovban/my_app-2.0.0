@@ -5,7 +5,7 @@ xhost +
 docker \
     run --interactive \
         --tty \
-        --rm \
+        --detach \
         --privileged \
         --network astra_net \
         --name dc01 \
@@ -14,4 +14,4 @@ docker \
         --volume /tmp/.X11-unix:/tmp/.X11-unix \
         --env=DISPLAY \
     freeipa:dc \
-    bash 
+    systemd 

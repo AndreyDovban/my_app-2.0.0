@@ -6,10 +6,9 @@ docker \
     run --interactive \
         --tty \
         --rm \
-        --privileged \
         --network astra_net \
-        --name dc01 \
-        --hostname dc01.domain.test \
+        --name client \
+        --hostname client.domain.test \
         --volume $(pwd):/opt \
         --volume /tmp/.X11-unix:/tmp/.X11-unix \
         --env=DISPLAY \
