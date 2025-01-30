@@ -3,6 +3,8 @@ FROM registry.astralinux.ru/library/astra/ubi17:1.7.6
 RUN groupadd --gid 1000 andrey
 RUN useradd --uid 1000 --gid andrey --shell /bin/bash --create-home andrey
 
+ADD astra_license.orel /etc/astra_license
+
 WORKDIR /opt/my_app
 RUN apt update
 RUN apt -y dist-upgrade
@@ -11,10 +13,10 @@ RUN apt -y install mc
 RUN apt -y install nano
 RUN apt -y install firefox
 RUN apt -y install systemd
-RUN apt -y install astra-safepolicy
+# RUN apt -y install astra-safepolicy
 RUN apt -y install astra-freeipa-server
 RUN apt -y install sudo
-RUN apt -y install dialog whiptail
+# RUN apt -y install dialog whiptail
 
 
 
