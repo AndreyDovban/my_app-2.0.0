@@ -5,6 +5,7 @@ xhost +
 docker \
     run --interactive \
         --tty \
+        --rm \
         --detach \
         --privileged \
         --network astra_net \
