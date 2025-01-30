@@ -10,11 +10,16 @@ services:
         networks:
             - astra_net
         hostname: dc01.domain.test
+        stdin_open: true
+        tty: true
+        ports:
+            - '8000:5000'
+        command: bash
         environment:
             - DISPLAY=$DISPLAY
         user: andrey
 
 networks:
-    default:
-        external: true
+    astra_net:
         name: astra_net
+        external: true
