@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    test:
+        image: freeipa:dc
+        container_name: dc01
+        volumes:
+            - ./:/opt
+            - /tmp/.X11-unix:/tmp/.X11-unix
+        networks:
+            - astra_net
+        hostname: dc01.domain.test
+        environment:
+            - DISPLAY=$DISPLAY
+        user: andrey
+
+networks:
+    default:
+        external: true
+        name: astra_net
