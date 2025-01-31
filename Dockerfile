@@ -4,6 +4,7 @@ RUN groupadd --gid 1000 andrey
 RUN useradd --uid 1000 --gid andrey --shell /bin/bash --create-home andrey
 
 ADD astra_license.orel /etc/astra_license
+ADD 999-astra.conf /etc/sysctl.d/999-astra.conf
 
 WORKDIR /opt/my_app
 RUN apt update
@@ -13,10 +14,11 @@ RUN apt -y install mc
 RUN apt -y install nano
 RUN apt -y install firefox
 RUN apt -y install systemd
-# RUN apt -y install astra-safepolicy
 RUN apt -y install astra-freeipa-server
 RUN apt -y install sudo
-# RUN apt -y install dialog whiptail
+
+ADD memory.max /sys/fs/cgroup/memory.max
+ADD memory.current /sys/fs/cgroup/memory.current
 
 
 
@@ -147,4 +149,6 @@ RUN apt -y install sudo
 
 # Примечание - разрешение неавторизованых подключений к "X" серверу
 # xhost + 
+
+# astra-freeipa-server -d domain.test -n dc01 -p 12345678 -o -y
 

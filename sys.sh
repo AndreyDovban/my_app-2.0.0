@@ -4,6 +4,7 @@ xhost +
 
 docker \
     run --interactive \
+        --memory "8g" \
         --tty \
         --rm \
         --detach \
