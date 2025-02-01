@@ -1,7 +1,7 @@
 FROM registry.astralinux.ru/library/astra/ubi17:1.7.6 
 
 RUN groupadd --gid 1000 andrey
-RUN useradd --uid 1000 --gid andrey --shell /bin/bash --create-home andrey
+RUN useradd --uid 1000 --gid andrey --password 12345678 --shell /bin/bash --create-home andrey
 
 ADD astra_license.orel /etc/astra_license
 ADD 999-astra.conf /etc/sysctl.d/999-astra.conf
@@ -17,8 +17,7 @@ RUN apt -y install systemd
 RUN apt -y install astra-freeipa-server
 RUN apt -y install sudo
 
-ADD memory.max /sys/fs/cgroup/memory.max
-ADD memory.current /sys/fs/cgroup/memory.current
+
 
 
 
@@ -151,4 +150,4 @@ ADD memory.current /sys/fs/cgroup/memory.current
 # xhost + 
 
 # astra-freeipa-server -d domain.test -n dc01 -p 12345678 -o -y
-
+# podman cp ./installutils.py dc01:/usr/lib/python3/dist-packages/ipaserver/install/installutils.py

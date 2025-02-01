@@ -7,7 +7,6 @@ podman \
         --memory "8g" \
         --tty \
         --rm \
-        --detach \
         --privileged \
         --network astra_net \
         --name dc01 \
